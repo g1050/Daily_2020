@@ -44,9 +44,11 @@ static const char * szret[] = { "I get a correct result\n",
 LINE_STATUS parse_line(char *buffer,int &checked_index,int &read_index)
 {
     char temp;
+    std::cout << buffer << std::endl;
 
     for(;checked_index < read_index;checked_index++){//逐个字节分析
         temp = buffer[checked_index];
+        /* std::cout << temp << (int)temp << std::endl; */
 
         /* 如果当前是'\r',则表示可能读到一个完整的行 */
         if(temp == '\r'){
@@ -54,8 +56,10 @@ LINE_STATUS parse_line(char *buffer,int &checked_index,int &read_index)
             if((checked_index + 1) == read_index){//不存在下一个字节
                 return LINE_OPEN;
             }else if(buffer[checked_index + 1] == '\n'){//下一字节刚好是'\n'
+                /* std::cout << (int)buffer[checked_index + 1] << std::endl; */
                 buffer[checked_index++] = '\0';
                 buffer[checked_index++] = '\0';
+                return LINE_OK;
             }else{//请求存在语法错误
                 return LINE_BAD;
             }
@@ -70,15 +74,19 @@ LINE_STATUS parse_line(char *buffer,int &checked_index,int &read_index)
 /* 分析请求行 */
 HTTP_CODE parse_requestline(char *temp,CHECK_STATE& checkstate)
 {
-    char *url = strpbrk(temp,"\t");
+    /* 找到第一个空格 */
+    char *url = strpbrk(temp," \t");
 
-    //如果请求中没有空白或者'\t',说明请求有问题
+    //如果请求中没有空格,说明请求有问题
     if(!url){
+        std::cout << "line:81" << std::endl;
         return BAD_REQUEST;
     }
-    *url++ = '\0';
+
+    *url++ = '\0';//把空格变为'\0'结束符
 
     char *method = temp;
+    std::cout << "Method:" << method << std::endl;
     if(strcasecmp(method,"GET") == 0){//get方法
         std::cout << "The request is GET\n" << std::endl;
     }else{
@@ -94,13 +102,13 @@ HTTP_CODE parse_requestline(char *temp,CHECK_STATE& checkstate)
     version += strspn(version," \t");
 
     /* 仅支持HTTP/1.1 */
-    cout << "The version is " << version << endl;
+    std::cout << "The version is " << version << std::endl;
     if(strcasecmp(version,"HTTP/1.1") != 0){
         return BAD_REQUEST;
     }
 
     /* 检查URL是否合法 */
-    if(strcasecmp(url,"http://",7) == 0){
+    if(strncasecmp(url,"http://",7) == 0){
         url += 7;
         url = strchr(url,'/');
     }
@@ -109,8 +117,23 @@ HTTP_CODE parse_requestline(char *temp,CHECK_STATE& checkstate)
         return BAD_REQUEST;
     }
 
-    cout << "The request url is:" << url << endl;
+    std::cout << "The request url is:" << url << std::endl;
     checkstate = CHECK_STATE_HEADER;//状态转移
+    return NO_REQUEST;
+}
+
+/* 分析头部字段 */
+HTTP_CODE parse_headers(char *temp)
+{
+    if(temp[0] == '\0'){//遇到一个空行说明是一个HTTP请求
+        return GET_REQUEST;
+    }else if(strncasecmp(temp,"Host:",5) == 0){
+        temp += 5;
+        temp += strspn(temp," \t");
+        std::cout << "The request host is:" << temp << std::endl;
+    }else{
+        std::cout << "I can't handle this header\n" << std::endl;
+    }
     return NO_REQUEST;
 }
 
@@ -125,7 +148,7 @@ HTTP_CODE parse_content(char *buffer,int &checked_index,CHECK_STATE &checkstate,
         char *temp = buffer + start_line; //startline是行在buffer中的位置
         start_line = checked_index;//记录下一行的起始位置
 
-        /* checked_index记录主状态机当前的状态 */
+        /* checkstate记录主状态机当前的状态 */
         switch(checkstate){
         case CHECK_STATE_REQUESTLINE://第一个状态，分析请求行
             {
@@ -139,9 +162,9 @@ HTTP_CODE parse_content(char *buffer,int &checked_index,CHECK_STATE &checkstate,
             {
                 retcode = parse_headers(temp);
                 if(retcode == BAD_REQUEST){
-
+                    return BAD_REQUEST;
                 }else if(retcode == GET_REQUEST ){
-
+                    return GET_REQUEST;
                 }
                 break;
             }

@@ -4,12 +4,13 @@ using namespace std;
 int main(int argc,char *argv[])
 {
     if(argc <= 2){
-        cout << "Usage:" << argv[0] << "ip_address port_number" << endl;
+        cout << "Usage:" << argv[0] << " ip_address port_number" << endl;
         return 1;
     }
     
     const char *ip = argv[1];
     const int port = atoi(argv[2]);
+    std::cout << ip << ":" << port << std::endl;
     
     struct sockaddr_in address;
     bzero( &address,sizeof(address));
@@ -21,13 +22,16 @@ int main(int argc,char *argv[])
     assert(listenfd >= 0);
     int ret = bind(listenfd,(struct sockaddr*)&address,sizeof(address));
     assert(ret != -1);
+    ret = listen(listenfd,5);
+    assert(ret != -1);
     struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof(client_address);
     int fd = accept(listenfd,(struct sockaddr*)&client_address,&client_addrlength );
 
     if(fd < 0){
-        cout << "errorno is " << errno << endl;
+        std::cout << "errno:" << errno << std::endl;
     }else{
+        std::cout << "Accept client" << std::endl;
         char buffer[BUFFER_SIZE];//读缓冲区
         memset(buffer,'\0',BUFFER_SIZE);
         int data_read = 0;
@@ -39,15 +43,19 @@ int main(int argc,char *argv[])
         CHECK_STATE checkstate = CHECK_STATE_REQUESTLINE;
         while(1){//循环读取数据并且分析
            data_read = recv(fd,buffer + read_index,BUFFER_SIZE - read_index,0);
+           std::cout << "Server has read " << data_read << " byte." << std::endl;
            if(data_read == -1){
                cout << "read failed" << endl;
+               break;
            }else if(data_read == 0){
                 cout << "Remote client has closedd the connection " << endl;
+                break;
            }
            read_index += data_read;
 
            /* 分析目前已获得的所有客户数据 */
            HTTP_CODE result = parse_content(buffer,checked_index,checkstate,read_index,start_line);
+
            if(result == NO_REQUEST){
                continue;
            }else if(result == GET_REQUEST){
@@ -57,12 +65,13 @@ int main(int argc,char *argv[])
                send(fd,szret[1],strlen(szret[1]),0);
                break;
            }
+
         }
 
 
     }
-
     close(fd);
+
     close(listenfd);
     cout << "Have a nice day! ^.^" << endl;
 
