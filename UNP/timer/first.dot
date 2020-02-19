@@ -1,0 +1,5 @@
+digraph first2{
+    你好->b;
+    b->d;
+    c->d;
+}

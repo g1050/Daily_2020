@@ -1,0 +1,5 @@
+digraph create{
+    rankdir = LR;
+    第一个->第二个;
+    第二个->第三个;
+}

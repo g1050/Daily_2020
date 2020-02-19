@@ -129,7 +129,7 @@ public:
        if(!head){
            return ;
        }
-       std::cout << "Timer tick!" << std::endl;
+       std::cout << "Timer tick![定时器滴答响]" << std::endl;
        time_t cur = time(NULL);//获得当前系统的时间
        util_timer* tmp = head;
 
