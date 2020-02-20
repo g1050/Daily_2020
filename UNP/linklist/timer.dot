@@ -1,0 +1,15 @@
+digraph timer{
+    rankdir = UD;
+    "开始" -> 
+    "初始化操作(添加信号，设置alarm,套接字,epoll创建)" -> "epoll_wait" -> "判断事件类型";
+    "初始化操作(添加信号，设置alarm,套接字,epoll创建)" -> "每隔TIME_SLOT发送SIGALARM信号" -> "SIGALRM" [style = dotted]
+
+    "判断事件类型" -> "listenfd有事件" -> "接受连接" -> "创建定时器";
+
+    "判断事件类型" -> "pipe[0]管道读端有读事件发生" -> "处理信号";
+    "处理信号" -> "SIGALRM" -> "time_handler" -> "tick" -> "遍历整条链表查是否有连接超时" -> "处理超市连接";
+    "处理信号" -> "SIGTERM" -> "stop server";
+
+    "判断事件类型"  ->  "其他读事件" -> "处理收到的数据" -> "重新设置定时器时间";
+    
+}

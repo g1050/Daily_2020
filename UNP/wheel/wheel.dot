@@ -1,0 +1,38 @@
+digraph{
+    node [shape = record]
+    client_data[label = "{
+        client_data\l
+        |
+        sockaddr_in address\l
+        int sockfd\l 
+        char buf[]\l
+        tw_timer *timer\l
+    }
+    "]
+
+    tw_timer[label = "{
+        tw_timer\l
+        |
+        +int rotation\l
+        +int time_slot\l
+        +回调函数\l
+        +client_data *userdata\l
+        |
+        -tw_timer *next\l
+        -tw_timer *prev\l
+        
+    }"]
+
+    tw_wheel[label = "{
+        tw_wheel\l
+        |
+        -int n\l
+        -int SI\l
+        -tw_timer　slots[N]\l
+        -int cur_slot\l
+    }
+
+    "]
+
+
+}

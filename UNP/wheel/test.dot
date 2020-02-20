@@ -1,0 +1,10 @@
+digraph{
+    node [shape = record]
+        Account[label = "{
+            Account
+            |
+            #balabce:int\l
+            |
+            +GetBalance():int\l
+        }"]
+}
