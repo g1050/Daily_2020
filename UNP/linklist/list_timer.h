@@ -70,6 +70,7 @@ public:
 
    }
     
+   /* 删除的时候指定了定时器 */
    /* 将目标定时器从链表中删除 */
    void del_timer(util_timer* timer){
        if(!timer){
@@ -107,21 +108,25 @@ public:
 
    /* 将目标定时器timer添加到链表中 */  
    void add_timer(util_timer*timer){
+
        if(!timer){
            return ;
        }
+
+       //链表为空的时候直接添加
        if(!head){
            head = tail = timer;
            return ;
        }
 
        /* 需要保证链表是升序的 */
-       if(timer->expire < head->expire){
+       if(timer->expire < head->expire){//当前定时器小于头结点定时器,直接添加
            timer->next = head;
            head->prev = timer;
            head = timer;
            return ;
        }
+       /* 不是最小的话调用重载函数 */
        add_timer(timer,head);
    }
 
