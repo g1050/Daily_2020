@@ -1,0 +1,17 @@
+digraph{
+    开始->解析参数->{"-c","-h","?"};
+    "-c"->读取配置文件;
+    {"-h","?"}->帮助手册;
+    读取配置文件->处理SIGPIPE信号->初始化监听套接字
+        ->创建线程池->定时器初始化->服务器正式启动->
+        epoll_wait_loop->{"listenfd响应","connfd响应"};
+
+        "listenfd响应"->"accept"->{"error","correct"};
+            "error"->{"EAGIN||EWOULDBLOCK","else"};
+            "correct"->初始化客户;
+
+        "connfd响应"->{"EPOLLERR||EPOLLHUP||!EPOLLIN","其他事件类型"};
+        "EPOLLERR||EPOLLHUP||!EPOLLIN"->continue;
+        "其他事件类型"->处理请求;
+      
+}
