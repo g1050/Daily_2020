@@ -1,9 +1,39 @@
 digraph{
-    rankdir = circle;
-    "pointer" -> "tw_timer1" -> "clien_data1";
-    "pointer" -> "tw_timer2" -> "clien_data2";
-    "pointer" -> "tw_timer3" -> "clien_data3";
-    "pointer" -> "tw_timer4" -> "clien_data4";
-    "pointer" -> "tw_timer5" -> "clien_data5";
-    "pointer" -> "tw_timer6" -> "clien_data6";
+    rankdir = UD;
+    node [shape = record]
+    "client_data"[label ="{
+        client_data\l
+        |
+        sockaddr_in address\l
+        int sockfd\l
+        char buf[]\l
+        tw_timer *timer\l
+    }" ]
+
+    "tw_timer"[label = "{
+        tw_timer\l
+        |
+        +int rotation\l
+        +int time_slot\l
+        +void (*cb_func)(client_data*)\l
+        +client_data* user_data\l
+        +tw_timer* next\l
+        +tw_timer* prev\l
+    }"]
+
+    "time_wheel"[label ="{
+        time_wheel\l
+        |
+        -int N = 60\l
+        -int SI = 1\l
+        -tw_timer* slots[N]\l
+        -int cur_slot\l
+    }"]
+
+    "time_wheel " -> "tw_timer1" -> "clien_data1";
+    "time_wheel " -> "tw_timer2" -> "clien_data2";
+    "time_wheel " -> "tw_timer3" -> "clien_data3";
+    "time_wheel " -> "tw_timer4" -> "clien_data4";
+    "time_wheel " -> "tw_timer5" -> "clien_data5";
+    "time_wheel " -> "tw_timer6" -> "clien_data6";
 }

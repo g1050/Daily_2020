@@ -1,6 +1,6 @@
 #ifndef HTTP_CONN_H
 #define HTTP_CONN_H
-
+#include <sys/uio.h>
 #include <unistd.h>
 #include <signal.h>
 #include <sys/types.h>
@@ -18,6 +18,7 @@
 #include <sys/mman.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <iostream>
 /* #include "lock.h" */
 
 class http_conn{
@@ -32,7 +33,7 @@ public:
     enum METHOD{
         GET = 0,POST,HEAD,PUT,DELETE,TRACE,OPTIONS,CONNECT,PATCH
     };
-    
+
     /* 解析客户请求时候，主状态机的状态 */
     enum CHECK_STATE{
         CHECK_STATE_REQUESTLINE = 0,
@@ -46,12 +47,12 @@ public:
         FORBIDDEN_REQUEST,FILE_REQUEST,INTERNAL_ERROR,
         CLOSED_CONNECTION
     };
-    
+
     /* 行的读取状态 */
     enum LINE_STATUS{
         LINE_OK = 0,LINE_BAD,LINE_OPEN
     };
-    
+
 public:
     http_conn(){}
     ~http_conn(){}
@@ -79,7 +80,9 @@ private:
     HTTP_CODE parse_headers(char *text);
     HTTP_CODE parse_content(char *text);
     HTTP_CODE do_request();
-    char* get_line(return m_read_buf + m_start_line;);
+    char* get_line(){
+        return m_read_buf + m_start_line;
+    }
     LINE_STATUS parse_line();
 
     /* 下面这组函数被process_write调用用来填充HTTP应答 */
@@ -108,7 +111,7 @@ private:
     int m_read_idx;
     /* 当前正在分析的字符在读缓冲区的位置 */
     int m_checked_idx;
-    int m_start_line;   
+    int m_start_line;  
     char m_write_buf[WRITE_BUFFER_SIZE];
     int m_write_idx;
 
@@ -116,9 +119,9 @@ private:
     /* 请求方法 */
     METHOD m_method;
 
-    char m_read_file[FILENAME_LEN];
+    char m_real_file[FILENAME_LEN];
     char *m_url;
-    
+
     char* m_version;
     char *m_host;
     int m_content_length;
