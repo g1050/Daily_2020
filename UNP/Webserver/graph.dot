@@ -1,0 +1,66 @@
+digraph{
+    Eventloop[shape = record,label = "{
+        Evenloop\l
+        |
+        -bool looping\l
+        -shared_ptr\<Epoll\> poller\l
+        -int wakeupFd\l
+        -bool quit\l
+        -bool eventHandling\l
+        -mutableMutexLock mutex\l
+        -vector\<Functoe\> pendingFunctors\l
+        -bool callingPendingFunctors\l
+        -const pid_t threadid\l
+        -shared_ptr\<Channel\> pwakeupChannel\l
+    }"]
+
+    Epoll[shape = record,label ="{
+        Epoll\l
+        |
+        +Channel epoll\l
+        +Channel getEventsRequest\l
+        |
+        _int MAXFDS = 100000\l
+        -int epollfd\l
+        -channel fd2chan[MAXFDS]\l
+        -HttpData fd2http[MAXFDS]\l
+        -TimerManager TimerManager\l
+        -vector (epoll_event) events;
+    }"]
+    
+    Channel[shape = record ,label = "{
+        Channel\l
+        |
+        -Evenloop *loop\l
+        -int fd\l
+        -__unit32_t events\l
+        -__unit32_t revents\l
+        -__unit32_t lastEvents\l
+        -HttpData* holder\l
+        -CallBack readHandler\l
+        -CallBack writeHandler\l
+        -CallBack errorHandler\l
+        -CallBack connHandler\l
+    }"]
+
+    HttpData[shape = record,label = "{
+        HttpData\l
+        |
+        -Eventloop* loop\l
+        -Channel* channel\l
+        -int fd\l
+        -string inBuffer\l
+        -string outBuffer\l
+        -bool error\l
+        -ConnectionState connectionState\l
+        -HttpMethod method\l
+        -string fileName\l
+        -string path\l
+        -int nowReadPos\l
+        -ProcessState sState\l
+        -ParseState hState\l
+        -bool keepAlive\l
+        -map\<string,string\> headers\l
+        -TimerNode* timer\l
+    }"]
+}

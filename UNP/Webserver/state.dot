@@ -1,0 +1,38 @@
+digraph{
+    node[shape = record]
+    "STATE_PARSE_URI(default)" -> "func:parse_URI()"
+    -> {"PARSE_URI_AGAIN",
+    "PARSE_URI_ERROR",
+    "PARSE_URI_SUCESS"};//sucess had got the method.
+
+    "PARSE_URI_SUCESS" -> STATE_PARSE_HEADERS
+        ->"func:parse headers()";
+    "func:parse headers()" -> "PARSE_HEADER_SUCESS";
+        "PARSE_HEADER_SUCESS" -> "METHOD_POST" -> "STATE_RECV_BODY";
+        "PARSE_HEADER_SUCESS" -> "METHOD_GET" -> "STATE_ANLYSIS" -> 
+            "func: annalysisRequest()" -> 
+                "ANALYSIS_SUCESS","ANALYSIS_ERROR";
+                "ANALYSIS_SUCESS" -> "STATEFINISH";
+
+    "func:parse headers()" -> "PARSE_HEADER_ERROR";
+    "func:parse headers()" -> "PARSE_HEADER_AGAIN";
+
+    PARSE_URI_AGAIN -> break;
+    PARSE_URI_ERROR -> "isError = true";
+
+    //从状态机
+    "func:parse headers() " -> "h_start(default)" ->
+        "h_key" -> "h_colon" -> "h_spaces_after_colon" ->
+        "h_value" -> "h_CR" -> "h_LF" ;
+    "h_LF" -> "PARSE_HEADER_AGAIN " -> "h_key" [style = dashed];
+
+    "h_LF" -> "h_end_LF" -> "h_end_CR" -> "PARSE_HEADER_SUCESS ";
+    
+    "func:parse headers() " -> "PARSE_HEADER_ERROR " ;
+
+    //从状态机 file:requestData line:477
+    "func: annalysisRequest() " -> "METHOD_POST ";
+    "func: annalysisRequest() " -> "METHOD_GET "
+        -> "ANALYSIS_SUCESS ","ANALYSIS_ERROR " ;
+
+}

@@ -1,0 +1,45 @@
+digraph{
+    requestData [shape = record , label = "{
+        requestData\l
+        |
+        -int againTimes\l
+        -stirng path\l
+        -int fd\l
+        -int epollfd\l
+        -string content\l
+        -int method\l
+        -int HTTPversion\l
+        -string file_name\l
+        -int now_read_pos\l
+        -int state\l
+        -int h_state\l
+        -bool isfinish\l
+        -bool keep_alive\l
+        -unoedered_map \<string,string\>headers\l
+        -mytimer* timer\l
+    }"]
+
+    threadpool_t [shape = record ,label = "{
+        threadpool_t\l
+        |
+        -pthread_mutex_t lock\l
+        -pthread_cond_t notify\l
+        -pthread_t* threads\l
+        -threadpool_task_t *queue\l
+        -int thread_count\l
+        -int queue_size\l
+        -int head\l
+        -int tail\l
+        -int count\l
+        -int shutdown\l
+        -int started\l
+    }"]
+
+    threadpool_task_t[shape = record,label = "{
+        threadpool_task_t\l
+        |
+        function\l
+        void* argument\l
+    }"]
+}
+
