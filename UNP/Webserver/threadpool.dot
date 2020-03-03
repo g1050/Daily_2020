@@ -1,0 +1,15 @@
+digraph{
+    "fd2req(requestdata指针数组)";
+    "cur_req处理的所有响应请求中的当前请求"
+    "req_data(requestdata指针vector)";
+
+    "Epoll::epoll_wait" -> "getEventsRequest(返回requestdata指针)" 
+        -> {"listenfd","else"};
+    listenfd -> acceptConnectioin;
+    else -> {"enableRead","enableWrite"} -> "req_data->push(cur_req)";
+
+    {"acceptConnectioin","req_data->push(cur_req)"}  -> "req_data.size() > 0"
+    -> "加入线程池";
+    
+
+}

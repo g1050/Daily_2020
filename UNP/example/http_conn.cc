@@ -383,6 +383,7 @@ bool http_conn::add_content(const char* content){
 
 
 bool http_conn::process_write(HTTP_CODE ret){
+
     switch(ret){
     case INTERNAL_ERROR:{
                             add_status_line(500,error_500_title);
@@ -421,7 +422,10 @@ bool http_conn::process_write(HTTP_CODE ret){
 
                            }
     case FILE_REQUEST:{
+                        std::cout << "文件请求" << std::endl;
+
                           add_status_line(200,ok_200_title);
+                          m_file_stat.st_size  = 0;
                           if(m_file_stat.st_size != 0){
                               add_headers(m_file_stat.st_size);
                               m_iv[0].iov_base = m_write_buf;
@@ -450,13 +454,15 @@ bool http_conn::process_write(HTTP_CODE ret){
 
 void http_conn::process(){
     std::cout << "处理客户请求" << std::endl;
-    HTTP_CODE read_ret = process_read();
+    
+    /* HTTP_CODE read_ret = process_read();
     if(read_ret == NO_REQUEST){
         std::cout << "No request" << std::endl;
         modfd(m_epollfd,m_sockfd,EPOLLIN);
         return ;
-    }
+    }*/
 
+    HTTP_CODE read_ret = FILE_REQUEST;
     bool write_ret = process_write(read_ret);
     if(!write_ret){
         close_conn();
