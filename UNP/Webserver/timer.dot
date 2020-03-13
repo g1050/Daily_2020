@@ -1,0 +1,30 @@
+digraph{
+
+
+    node[shape = record ];
+    TimerNode [label = "{
+        TimerNode\l
+        |
+        +void update(int timeout)\l
+        +bool isvalid()\l
+        +void clearReq()\l
+        +void setDeleted()\l
+        +bool isDeleted() const\l
+        +size_t getExpTime() const\l
+        |
+        -bool deleted\l
+        -size_t expired_time\l
+        -SP_ReqData request data\l
+    }"]
+
+    TimerManager[label = "{
+        TimerManager\l
+        |
+        +void addTimer()\l
+        +void addTimer2()\l
+        +void handle_expired_event()\l
+        |
+        -priority_queue<TimerNode> timer_node_queue\l
+        -metexlock\l
+    }"]
+}
