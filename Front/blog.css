@@ -1,0 +1,61 @@
+body{
+    background-color: #454545;
+    line-height: 1.7;
+}
+
+a,body{
+    color: #eeeeee;
+}
+.side_bar{
+    float: left;
+    width: 20%;
+}
+.side_bar *{
+    padding: 10px 20px;
+    color: #777777;
+}
+
+.side_bar *:hover{
+    color: #eeeeee;
+    transition: 200ms;
+}
+
+.side_bar .nav{
+    font-weight: 700;
+}
+.header .name{
+    line-height: 1;
+    margin-bottom: 10px;
+    border: 5px solid #eeeeee;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 30px;
+    color: blanchedalmond;
+    display: inline-block;
+}
+.main{
+    float: right;
+    width: 80%;
+    color: #454545;
+}
+
+.main .item{
+    margin-bottom: 0px;
+    padding: 20px 30px;
+    background-color: #eeeeee;
+    width: 50%;
+}
+
+.main .item .status{
+    font-size: 13px;
+    color: #706f6b;
+}
+.main .item .title{
+    font-weight: 700;
+    font-size: 25px;
+}
+
+
+.main .item *{
+    margin: 10px 0;
+}

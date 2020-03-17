@@ -1,0 +1,24 @@
+digraph{
+    MutexLock[shape = record,label = "{
+        MutexLock\l
+        |
+        +MutexLock()\l
+        +~MutexLock()\l
+        +isLockedByThisThread():bool\l
+        +lock():void\l
+        +unlock():void\l
+        +getPthreadMutex()\l
+        |
+        -mutex_:pthread_mutex_t\l
+        -holder_:pid_t\l
+    }"]
+    
+    MutexLockGuard[shape = record,label = "{
+        MutexLockGuard\l
+        |
+        +MutexLockGuard(MutexLock mutex)\l
+        +~MutexLock()\l
+        |
+        -mutex_:MutexLock&;
+    }"]
+}

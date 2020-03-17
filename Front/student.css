@@ -1,0 +1,91 @@
+.header {
+    width: 100%;
+    background-color: aquamarine;
+    display: block;
+    float: left;
+}
+
+.header *{
+    float: left;
+}
+
+.header .logo{
+    width: 40%;
+}
+
+.header .text{
+    padding-top: 50px;
+    width: 60%;
+    font-size: 40px;
+    text-align: center;
+}
+
+.main{
+    background-color: bisque;
+    width: 100%;
+    display:block;
+    float: left;
+}
+
+.main .side_bar {
+    float: left;
+    width: 20%;
+    display: block;
+    float: left;
+}
+
+.main .side_bar *{
+   text-align: center; 
+    background-color: lightslategray;
+    margin: 10px;
+    display: inline-block;
+    width: 100%;
+}
+.main .info{
+    width: 80%;
+    display: inline-block;
+    float: right;
+}
+
+.main .info .box{
+    display: block;
+    width: 100%;
+}
+.main .info .box *{
+    display: inline-block;
+    float: left;
+}
+
+.main .info .sheet{
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.main .info .sheet_body{
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.footer{
+    width: 100%;
+    background-color: burlywood;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+.footer .page{
+    width: 100%;
+    display: inline-block;
+    float: left;
+}
+
+.footer .page *{
+    display: inline-block;
+}
+
+.footer .name{
+    color: rgba(82, 78, 78, 0.438);
+}
+
