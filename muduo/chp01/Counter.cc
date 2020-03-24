@@ -1,10 +1,6 @@
 #include <iostream>
-#include <boost/core/noncopyable.hpp>
-
-class MutexLock {
-public:
-    MutexLock(){}
-};
+#include <boost/noncopyable.hpp>
+#include <muduo/base/Mutex.h>
 
 /* A thread-safe counter. */
 class Counter :boost::noncopyable{
@@ -15,21 +11,29 @@ public:
 
 private:
     int64_t value_;
-    mutable MutexLock motex_;
+    mutable muduo::MutexLock mutex_;
 };
 
 int64_t Counter::value() const{
-    MutexLockGu;
+    muduo::MutexLockGuard lock(mutex_);//自动析构,析构前会释放锁子
+    return value_;
 }
+
+int64_t Counter::getAndIncrease(){
+    muduo::MutexLockGuard lock(mutex_);
+    int64_t ret = value_++;
+    return ret;
+}
+
 int main()
 {
+    Counter counter;
+    counter.getAndIncrease();
+    counter.getAndIncrease();
+    counter.getAndIncrease();
+    counter.getAndIncrease();
+    std::cout << counter.value() << std::endl;
 
-    /* std::cout << sizeof(int) << std::endl; */
-    /* std::cout << sizeof(int8_t) << std::endl; */
-    /* std::cout << sizeof(int16_t) << std::endl; */
-    /* std::cout << sizeof(int32_t) << std::endl; */
-    /* std::cout << sizeof(int64_t) << std::endl; */
-
-    return 0;
+    return 0;    
 }
 

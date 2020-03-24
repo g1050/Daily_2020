@@ -1,27 +1,46 @@
+html, body {
+    /* background-color: #454545; */
+    height: 100%;
+}
 .header {
     width: 100%;
-    background-color: aquamarine;
+    height: 20%;
     display: block;
-    float: left;
 }
 
-.header *{
+.header .picture{
     float: left;
-}
-
-.header .logo{
     width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center; /*垂直居中*/
+    justify-content: center; /*水平居中 */
+
+}
+
+ 
+.header  .picture  .logo{
+    vertical-align: middle;
+    align-items: center;
+    width: 80%;
 }
 
 .header .text{
-    padding-top: 50px;
+    height: 100%;
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
     width: 60%;
-    font-size: 40px;
+    font-size: 60px;
     text-align: center;
+    float: right;
 }
 
 .main{
-    background-color: bisque;
+    height: 70%;
+    background-color: #eee;
     width: 100%;
     display:block;
     float: left;
@@ -35,11 +54,21 @@
 }
 
 .main .side_bar *{
+
    text-align: center; 
-    background-color: lightslategray;
+   color: #454545;
+   font-size: large;
+   text-decoration: none;
     margin: 10px;
     display: inline-block;
     width: 100%;
+}
+
+.main .side_bar *:hover{
+    color: #777;
+}
+.main .side_bar {
+    margin-bottom: 20px;
 }
 .main .info{
     width: 80%;
@@ -68,6 +97,7 @@
     width: 100%;
 }
 .footer{
+    height: 10%;
     width: 100%;
     background-color: burlywood;
     display: block;

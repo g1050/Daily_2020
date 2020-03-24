@@ -1,0 +1,52 @@
+body {
+    background: #454545;
+    line-height: 1.5;
+}
+
+body, a{
+    color: #eee;
+}
+
+a {
+    text-decoration: none;
+}
+
+.side_bar {
+    float: left;
+    width: 20%;
+}
+
+.side_bar > *{
+    padding: 20px;
+}
+
+.side_bar .nav{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.side_bar .nav a ,
+.side_bar .tag_list a{
+    color: #777;
+    display: block;
+    padding: 5px;
+}
+
+.side_bar .nav a:hover,
+.side_bar .tag_list a:hover{
+    color: #eee;
+}
+
+.header .logo{
+    margin-bottom: 10px;
+    border: 5px solid #eee;
+    padding: 10px 20px;
+    font-size: 30px;
+    display: inline-block;
+}
+
+
+.main{
+    float: right;
+    width: 80%;
+}
