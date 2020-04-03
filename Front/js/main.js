@@ -69,3 +69,21 @@ function person(name){
 var p = person('Li Lei');
 p.setAge(22);
 console.log(p.getName() + ' ' + p.getAge());
+
+function sub(a,b){
+    return a-b;
+}
+console.log(sub(100,50));
+
+var res = confirm('Agree or not?');
+console.log(res);
+
+var name = prompt('What\'s your name?');
+console.log(name);
+
+var i = 1;
+setTimeout(console.log(name),2000);//定时器
+var timer = setInterval(console.log(i++),1000);//多长时间刷新一次,单位毫秒,返回定时器ID
+clearInterval(timer);//清除定时任务
+console.log('First');
+
