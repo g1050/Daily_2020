@@ -1,0 +1,31 @@
+body{
+    /* background-color: blackg; */
+}
+
+.flex-column {
+    background-color: #f8f9fa !important;
+}
+
+.card-img, .card-img-bottom {
+    height: 100%;
+}
+
+.card-title {
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.nav-tabs {
+    margin-top: 20px;
+}
+
+.user-photo{
+    width: 60px;
+}
+
+.carousel {
+    margin-top: 20px;
+}
