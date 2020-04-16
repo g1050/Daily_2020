@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+   <div id = "app">
+       <div>
+        <input type="text" v-model="name">
+        <!-- //双向绑定 -->
+        <span >你的名字是: {{name}}</span>
+       </div>
+       
+       <div>
+        <input type="text" v-model="sex">
+        <span>你的性别是: {{sex}}</span>
+
+       </div>
+
+       <div>
+        <input type="text" v-model="age">
+        <span v-if="age" >你的年龄是: {{age}}</span>
+       </div>
+
+        <ul>
+            <li v-for="person in friend">{{person}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="person in friends">{{person.name}}:{{person.age}}</li>
+        </ul>
+
+        <a v-bind:href="url">跳转</a>
+
+   </div> 
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

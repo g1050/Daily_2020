@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue学习笔记</title>
+
+    <style>
+        .active {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="name">
+            <!-- 将当前输入框的值指向name,双向绑定 -->
+            <span>Your name is :{{name}}</span>
+        </div>
+
+        <div>
+            <input type="text" v-model="age">
+            <span>Your age is :{{age}}</span>
+        </div>
+
+        <div>
+            <input type="text" v-model="sex">
+            <span v-if="sex">Your sex is :{{sex}}</span>
+        </div>
+    </div>
+
+    <div id="test">
+        <div>
+            <input type="text" v-model="math">
+            <span v-if="math">math score is: {{math}}</span>
+        </div>
+    </div>
+
+    <div id="test2">
+        <div>
+            <input type="text" v-model="chinese">
+            <span v-if="chinese">Chinese score is: {{chinese}}</span>
+        </div>
+    </div>
+
+    <div id="test3">
+        <div>
+            <input type="text" v-model="english">
+            <span v-if="english">English score is :{{english}}</span>
+        </div>
+    </div>
+
+    <!-- v-for学习 -->
+    <div id="test4">
+        <div v-for="food in foodList">{{food}}</div>
+        <!-- 打印对象 -->
+        <div v-for="person in people">{{person}}</div>
+        <div v-for="person in people">{{person.name}}:{{person.age}}</div>
+
+    </div>
+
+    <!-- v-bind学习 -->
+    <div id="test5">
+        <a v-bind:href="url" v-bind:class="{active: isActive}">点击跳转</a>
+    </div>
+
+    <!-- v-on学习 -->
+    <div id="test6">
+        <button v-on:click="onClick">按钮</button>
+    </div>
+
+    <!-- v-model学习 -->
+    <div id="test7">
+        <!-- 单选框 -->
+        <label>
+            男
+            <input v-model= "sex"  value = "male" type="radio">
+        </label>
+
+        <label>
+            女
+            <input v-model= "sex" value = "female" type="radio" >
+        </label> {{sex}}
+
+        <br>
+
+        <label>
+            篮球
+            <input type="checkbox" value="篮球" v-model="hobby">
+        </label>
+
+        <label>
+            排球
+            <input type="checkbox" value="排球" v-model="hobby">
+        </label> {{hobby}}
+
+        <br>
+
+        <textarea v-model="article"></textarea>
+
+        <br>
+
+        <select v-model="from">
+            <option value="1">西安</option>
+            <option value="2">武安</option>
+            <option value="3">武汉</option>
+        </select> {{from}}
+
+    </div>
+
+    <div id="test8">
+        <table border="1">
+            <thead>
+                <th>学科</th>
+                <th>分数</th>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>数学</td>
+                    <td><input type="text" v-model.number="math"></td>
+                </tr>
+
+                <tr>
+                    <td>英语</td>
+                    <td><input type="text" v-model.number="english"></td>
+                </tr>
+
+                <tr>
+                    <td>语文</td>
+                    <td><input type="text" v-model.number="chinese"></td>
+                </tr>
+
+                <tr>
+                    <td>总分</td>
+                    <td>{{sum}}</td>
+                </tr>
+
+                <tr>
+                    <td>平均分</td>
+                    <td>{{average}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="vue1.js"></script>
+
+</body>
+
+</html>
