@@ -1,0 +1,31 @@
+
+"个人使用映射间
+map <C-A> ggVG"+y
+map <C-y> "+y
+map <C-j> gg=G
+
+map <leader>w :w<ENTER>
+map <leader>wq :wq<ENTER>
+
+map <C-G> :Graphviz!
+map <C-F> :GraphvizCompile
+
+imap jj <ESC>
+
+map <S-L> $
+map <S-H> ^
+map <S-J> gg
+map <S-K> G
+
+
+
+"set relativenumber  " 开启相对行号
+" <Leader>t 翻译光标下的文本，在命令行回显
+nmap <silent> <Leader>t <Plug>Translate
+vmap <silent> <Leader>t <Plug>TranslateV
+" Leader>w 翻译光标下的文本，在窗口中显示
+"nmap <silent> <Leader>w <Plug>TranslateW
+"vmap <silent> <Leader>w <Plug>TranslateWV
+" Leader>r 替换光标下的文本为翻译内容
+"nmap <silent> <Leader>r <Plug>TranslateR
+"vmap <silent> <Leader>r <Plug>TranslateRV
