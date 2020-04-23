@@ -1,14 +1,16 @@
 package controllers
 
 import (
-	"astaxie/beego"
 	"fmt"
+	"github.com/astaxie/beego"
 	"hello2/models"
 )
 
 type MainController struct {
 	beego.Controller //包含关系，类似继承
 }
+
+
 
 func (c *MainController) Get() {
 	c.Data["Website"] = "baidu.com"

@@ -14,8 +14,12 @@ type User struct {
 }
 
 func init() {
+	//连接数据库
 	orm.RegisterDataBase("default", "mysql", "root:123456@tcp(127.0.0.1:3306)/test?charset=utf8", 30) //最后是一个超时时间
+	//注册model
 	orm.RegisterModel(new(User))
+	//创建表
+	orm.RunSyncdb("default",false,true)
 }
 
 func PrintUserByORM() {
