@@ -7,12 +7,12 @@ import (
 )
 
 type MainController struct {
-	beego.Controller
+	beego.Controller //包含关系，类似继承
 }
 
 func (c *MainController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
+	c.Data["Website"] = "baidu.com"
+	c.Data["Email"] = "1005035266@qq.com"
 	c.TplName = "index.tpl"
 }
 
