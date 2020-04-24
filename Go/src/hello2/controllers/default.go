@@ -12,7 +12,13 @@ type MainController struct {
 
 
 
+//重写Get方法
 func (c *MainController) Get() {
+	//models.InsertData()
+	//models.DeleteData()
+	//models.UpdateDate()
+	//models.Read()
+	//models.InsertOrder()
 	c.Data["Website"] = "baidu.com"
 	c.Data["Email"] = "1005035266@qq.com"
 	c.TplName = "index.tpl"

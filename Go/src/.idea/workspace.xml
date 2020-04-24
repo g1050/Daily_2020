@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e89fd8ef-7255-404d-9044-f95c0b4829e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hello2/controllers/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" afterDir="false" />
@@ -32,14 +31,13 @@
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello/hello.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello/hello.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello2/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/controllers/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello2/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/controllers/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello2/hello2" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/hello2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hello2/models/testorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/models/testorm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/routers/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/conf/app.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/main.go" afterDir="false" />
     </list>
@@ -107,6 +105,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="564" y="290" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587639336537">
@@ -129,9 +128,9 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state width="1868" height="254" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1587646567662" />
-    <state x="499" y="148" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587642673031">
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587714490057">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="499" y="148" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587642673031" />
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587714490057" />
   </component>
 </project>

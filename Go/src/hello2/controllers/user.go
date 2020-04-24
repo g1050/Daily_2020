@@ -33,3 +33,4 @@ func (c *UserController) GetInfo() {
 func (c *UserController) PostFile() {
 	c.Ctx.WriteString("This is post function")
 }
+
