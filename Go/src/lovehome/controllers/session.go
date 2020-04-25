@@ -39,3 +39,12 @@ func (c *SessionController) MyGetSession() {
 
 	//logs.Info(mp)
 }
+
+func (c *SessionController) MyDeleteSession(){
+	mp := make(map[string]interface{})
+	defer c.sendJSON(mp)
+
+	c.DelSession("name")
+	mp["errno"] = models.RECODE_OK
+	mp["errmsg"] = models.RecodeText(models.RECODE_OK)
+}
