@@ -42,7 +42,7 @@ $(document).ready(function() {
             success: function (data) {
                 if ("0" == data.errno) {
                     // 登录成功，跳转到主页
-                    location.href = "/static/html/index.html";
+                    location.href = "/index.html";
                     return;
                 }
                 else {

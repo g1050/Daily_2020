@@ -155,14 +155,11 @@ $(document).ready(function() {
             success: function(resp){
                 if (resp.errno == "0") {
                     // 表示注册成功,跳转到主页
-                    alert("hello1")
-                    location.href = "/static/html/index.html";
+                    location.href = "/index.html";
                 } else if (resp.errno == "4101") {
                     // 表示用户注册成功，但是用户的登录状态后端未保存，所以跳转到登录页面
-                    alert("hello3")
                     location.href = "/login.html";
                 } else {
-                    alert("hello2")
                     // 在页面中展示错误信息
                     $("#password2-err span").html(resp.errmsg);
                     $("#password2-err").show();
