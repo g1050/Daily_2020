@@ -20,6 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e89fd8ef-7255-404d-9044-f95c0b4829e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lovehome/controllers/area.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/controllers/houseindex.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/controllers/session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/controllers/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/models/area.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/models/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/models/recode.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/models/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lovehome/ulity/ulity.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" afterDir="false" />
@@ -31,13 +40,14 @@
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/controllers/default.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/hello2" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/hello2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello2/models/testorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/hello2/models/testorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loveHome/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/loveHome/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loveHome/static/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/loveHome/static/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test" beforeDir="false" afterPath="$PROJECT_DIR$/test/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/conf/app.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/main.go" afterDir="false" />
     </list>
@@ -61,6 +71,9 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1awGbDK4jDnbMMoqeXQiAaCwthS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,9 +87,14 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lovehome/models" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lovehome/models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build hello2">
     <configuration name="go build hello" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="src" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -86,8 +104,18 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="go build hello2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="src" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/hello2/main.go" />
+      <package value="hello2" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build hello2" />
         <item itemvalue="Go Build.go build hello" />
       </list>
     </recent_temporary>
@@ -108,29 +136,45 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="564" y="290" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587639336537">
+    <state x="593" y="176" key="#Inspections" timestamp="1587723924204">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="564" y="290" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587639336537" />
-    <state width="1868" height="254" key="GridCell.Tab.0.bottom" timestamp="1587646567662">
+    <state x="593" y="176" key="#Inspections/0.0.1920.1013@0.0.1920.1013" timestamp="1587723924204" />
+    <state x="564" y="290" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587727700489">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1587646567662" />
-    <state width="1868" height="254" key="GridCell.Tab.0.center" timestamp="1587646567662">
+    <state x="564" y="290" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587727700489" />
+    <state x="688" y="253" key="FileChooserDialogImpl" timestamp="1587718305784">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="254" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1587646567662" />
-    <state width="1868" height="254" key="GridCell.Tab.0.left" timestamp="1587646567662">
+    <state x="688" y="253" key="FileChooserDialogImpl/0.0.1920.1013@0.0.1920.1013" timestamp="1587718305784" />
+    <state width="1868" height="254" key="GridCell.Tab.0.bottom" timestamp="1587725841674">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="254" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1587646567662" />
-    <state width="1868" height="254" key="GridCell.Tab.0.right" timestamp="1587646567662">
+    <state width="1868" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1013@0.0.1920.1013" timestamp="1587725841674" />
+    <state width="1868" height="254" key="GridCell.Tab.0.center" timestamp="1587725841673">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state width="1868" height="254" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1587646567662" />
-    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587714490057">
+    <state width="1868" height="254" key="GridCell.Tab.0.center/0.0.1920.1013@0.0.1920.1013" timestamp="1587725841673" />
+    <state width="1868" height="254" key="GridCell.Tab.0.left" timestamp="1587725841672">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587714490057" />
+    <state width="1868" height="254" key="GridCell.Tab.0.left/0.0.1920.1013@0.0.1920.1013" timestamp="1587725841672" />
+    <state width="1868" height="254" key="GridCell.Tab.0.right" timestamp="1587725841674">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state width="1868" height="254" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1587725841674" />
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587809286610">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587809286610" />
+    <state x="631" y="61" width="657" height="891" key="find.popup" timestamp="1587723138007">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state x="631" y="61" width="657" height="891" key="find.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1587723138007" />
+    <state x="599" y="222" width="719" height="678" key="search.everywhere.popup" timestamp="1587804999872">
+      <screen x="0" y="0" width="1920" height="1013" />
+    </state>
+    <state x="599" y="222" width="719" height="678" key="search.everywhere.popup/0.0.1920.1013@0.0.1920.1013" timestamp="1587804999872" />
   </component>
 </project>

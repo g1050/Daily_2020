@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/astaxie/beego" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/go-sql-driver/mysql" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/github.com/nsf/gocode" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/loveHome" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/xcms" vcs="Git" />
   </component>
 </project>
