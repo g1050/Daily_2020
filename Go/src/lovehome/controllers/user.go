@@ -4,6 +4,7 @@ import (
 	"astaxie/beego"
 	"astaxie/beego/logs"
 	"encoding/json"
+	"lovehome/models"
 )
 
 type UserController struct {
@@ -26,7 +27,7 @@ func (c *UserController) PostRegisterData() {
 	c.SetSession("name",mp["mobile"].(string))
 	//插入数据库中,这里的mp用来存储发来的数据
 
-	//models.InsertUserData(mp)
+	models.InsertUserData(mp)
 	//logs.Info(ok)
 	ok := true;
 

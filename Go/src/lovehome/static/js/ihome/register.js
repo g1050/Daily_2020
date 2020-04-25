@@ -153,6 +153,7 @@ $(document).ready(function() {
             },
             dataType: "json", // 指明后端返回到前端的数据是json格式的
             success: function(resp){
+                //此处对应后台发来的错误码
                 if (resp.errno == "0") {
                     // 表示注册成功,跳转到主页
                     location.href = "/index.html";
