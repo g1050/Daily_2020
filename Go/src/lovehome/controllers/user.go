@@ -16,6 +16,34 @@ func (c *UserController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *UserController)PostLoginData() {
+	mp := make(map[string]interface{})
+	defer c.sendJSON(mp)
+
+	//获取前段发送的账号信息
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody,&mp);err != nil {
+		logs.Info(err)
+	}
+	//获取数据库中的信息
+	ok,user := models.SelectUserData(mp)
+	if !ok{
+		mp["errno"] = models.RECODE_USERERR
+		mp["errmsg"] = "账号未注册"
+		return
+	}
+	//比对密码,设置session,返回结果
+	if user.Password_hash == mp["password"]{
+		mp["errno"] = models.RECODE_OK
+		mp["errmsg"] = "密码正确"
+		//设置session
+		c.SetSession("name",user.Password_hash)
+	}else {
+		mp["errno"] = models.RECODE_DBERR
+		mp["errmsg"] = "密码错误"
+	}
+
+}
+
 func (c *UserController) PostRegisterData() {
 	mp := make(map[string]interface{})
 	//获取前端的数据
