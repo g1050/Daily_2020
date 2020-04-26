@@ -20,15 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e89fd8ef-7255-404d-9044-f95c0b4829e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lovehome/controllers/area.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/controllers/houseindex.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/controllers/session.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/controllers/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/models/area.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/models/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/models/recode.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/models/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lovehome/ulity/ulity.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/controllers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/linux_amd64/hello2/routers.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/github.com/pkg/errors/@v/list" afterDir="false" />
@@ -40,14 +31,11 @@
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/golang.org/x/xerrors/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/mod/cache/download/gopkg.in/check.v1/@v/list" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" beforeDir="false" afterPath="$PROJECT_DIR$/../pkg/sumdb/sum.golang.org/latest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astaxie/beego/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/astaxie/beego/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loveHome/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/loveHome/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loveHome/static/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/loveHome/static/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/default.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test" beforeDir="false" afterPath="$PROJECT_DIR$/test/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lovehome/lovehome" beforeDir="false" afterPath="$PROJECT_DIR$/lovehome/lovehome" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/conf/app.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xcms/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/xcms/main.go" afterDir="false" />
     </list>
@@ -164,10 +152,10 @@
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
     <state width="1868" height="254" key="GridCell.Tab.0.right/0.0.1920.1013@0.0.1920.1013" timestamp="1587725841674" />
-    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587809286610">
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587821774006">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
-    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587809286610" />
+    <state x="499" y="148" width="626" height="667" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1013@0.0.1920.1013" timestamp="1587821774006" />
     <state x="631" y="61" width="657" height="891" key="find.popup" timestamp="1587723138007">
       <screen x="0" y="0" width="1920" height="1013" />
     </state>
