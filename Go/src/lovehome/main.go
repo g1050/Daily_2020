@@ -34,6 +34,7 @@ func TransparentStatic(ctx *context.Context) {
 func ignoreStaticPath() {
 
 	//透明static
+	beego.SetStaticPath("group1/M00/","logs/storage_data/data/")
 
 	beego.InsertFilter("/", beego.BeforeRouter, TransparentStatic)
 	beego.InsertFilter("/*", beego.BeforeRouter, TransparentStatic)
