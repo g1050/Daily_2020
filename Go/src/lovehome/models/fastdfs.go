@@ -1,23 +1,21 @@
 package models
 
 import (
-	"astaxie/beego/logs"
-	"github.com/tedcy/fdfs_client"
+	"astaxie/beego/httplib"
+	"fmt"
+	"io/ioutil"
+	"os"
 )
 
-func UploadByName(filename string) {
-	f,err := fdfs_client.NewClientWithConfig("../conf/client.go")
-	defer f.Destory()
-	if err != nil{
-		logs.Error("创建fdfs_client失败",err.Error())
-		return
-	}
-
-	fileId,errupload := f.UploadByFilename(filename)
-	if fileId != nil{
-		logs.Error("上传文件失败",errupload.Error())
-		return
-	}
-
-	logs.Info(fileId)
+func UploadFile(bufer []byte,filename string)string{
+	str := "tests/tmp/" + filename
+	//创建临时文件,转存做的并不漂亮
+	ioutil.WriteFile(str,bufer,0644)
+	req := httplib.Post("http://192.168.0.115:8080/upload")
+	req.PostFile("file",str)
+	fmt.Println(req.String())
+	ret,_ := req.String()
+	//删除文件
+	os.Remove(str)
+	return ret
 }

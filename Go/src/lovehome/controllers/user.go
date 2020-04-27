@@ -16,6 +16,42 @@ func (c *UserController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *UserController) PostAvatar(){
+
+	//获得文件的二进制数据data,文件信息hd
+	mp := make(map[string]interface{})
+	defer c.sendJSON(mp)
+	//前段发来的二进制数据的字段就叫avatar
+	filedata,hd,err := c.GetFile("avatar");
+	if err != nil{
+		mp["errno"] =  models.RECODE_REQERR
+		mp["errmsg"] = models.RecodeText(models.RECODE_REQERR)
+		logs.Error("获取二进制数据失败")
+		return
+	}
+
+	//发给M层存储到fastdfs中
+	bufer := make([]byte,hd.Size)
+	filedata.Read(bufer)
+	path := models.UploadFile(bufer,hd.Filename)
+
+	mp["errno"] = models.RECODE_OK
+	mp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	url := make(map[string]string)
+	url["avatar_url"] = path
+	mp["data"] = url
+	/*
+	//获取后缀名字
+	suffix := path.Ext(hd.Filename)
+	logs.Info("suffix",suffix)
+	//存储文件到fastdfs中
+	 */
+
+
+
+
+}
+
 func (c *UserController)PostLoginData() {
 	mp := make(map[string]interface{})
 	defer c.sendJSON(mp)

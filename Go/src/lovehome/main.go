@@ -1,12 +1,11 @@
 package main
 
 import (
-	_ "lovehome/routers"
-	"github.com/astaxie/beego/context"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
+	_ "lovehome/routers"
 	"net/http"
 	"strings"
-
 )
 
 func main() {

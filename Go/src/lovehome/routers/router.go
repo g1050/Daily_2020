@@ -12,5 +12,6 @@ func init() {
 	beego.Router("/api/v1.0/houses/index", &controllers.HouseIndexController{},"Get:GetHouseIndex")
 	beego.Router("/api/v1.0/users", &controllers.UserController{},"Post:PostRegisterData")
 	beego.Router("/api/v1.0/sessions", &controllers.UserController{},"Post:PostLoginData")
+	beego.Router("/api/v1.0/user/avatar", &controllers.UserController{},"Post:PostAvatar")
 
 }
