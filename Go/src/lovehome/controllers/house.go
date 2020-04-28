@@ -3,6 +3,8 @@ package controllers
 import (
 	"astaxie/beego"
 	"astaxie/beego/logs"
+	"fmt"
+	"lovehome/models"
 )
 
 type HouseController struct {
@@ -16,10 +18,26 @@ func (c *HouseController) sendJSON(mp map[string]interface{}){
 
 func (c *HouseController) GetMyHouseData(){
 	//返回数据
-	logs.Info("你好")
 	mp := make(map[string]interface{})
 	defer c.sendJSON(mp)
 
+	//从session中获取id
+	id := c.GetSession("id")
+	//从数据库中取出对应useid的数据
+	ok,houses  := models.SelectHouseDataByUserID(id.(int))
+	if !ok {
+		mp["errno"] = models.RECODE_DBERR
+		mp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+
+	//house转map
+	housemap := make(map[string]interface{})
+	housemap["house"] = houses
+	mp["errno"] = models.RECODE_OK
+	mp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	mp["data"] = housemap
+	fmt.Println(houses)
 }
 
 func (c *HouseController) GetHouseIndex() {
