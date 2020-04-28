@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"lovehome/models"
+	"strconv"
 )
 
 type HouseController struct {
@@ -25,8 +26,63 @@ func (c *HouseController) PostHouseData(){
 	datamap := make(map[string]interface{})
 	json.Unmarshal(c.Ctx.Input.RequestBody,&datamap)
 	//判断前段数据的合法性,其实所有请求都要检查
+	fmt.Println("datamap",datamap)
 
 	//插入数据到数据库
+	house := models.House{}
+	fmt.Println("dot.....................................1")
+	//Area
+	tmp,_ := strconv.Atoi(datamap["area_id"].(string))
+	area := models.Area{Id: tmp,Name: "武安"}
+	house.Area = &area
+	//User
+	user := models.User{Id: c.GetSession("id").(int)}
+	house.User = &user
+	//Facilities复杂操作
+	facilities := []models.Facility{}
+	for _,f := range datamap["facility"].([]interface{}) {
+		//获得当个设施ID
+		fid,_ := strconv.Atoi(f.(string))
+		//创建单个设施
+		fac := models.Facility{Id: fid}
+		//添加进数组
+		facilities = append(facilities,fac)
+	}
+
+	//othres
+	//string转int,需要辅助数字
+	tmp,_ = strconv.Atoi(datamap["acreage"].(string))
+	house.Acreage = tmp
+	house.Address = datamap["address"].(string)
+	house.Beds = datamap["beds"].(string)
+	tmp,_ = strconv.Atoi(datamap["capacity"].(string))
+	house.Capacity = tmp
+	//Ctime?
+	tmp,_ = strconv.Atoi(datamap["deposit"].(string))
+	house.Deposit = tmp
+	tmp,_ = strconv.Atoi(datamap["price"].(string))
+	house.Price = tmp
+	tmp,_ = strconv.Atoi(datamap["room_count"].(string))
+	house.Room_count = tmp
+	house.Title = datamap["title"].(string)
+	house.Unit = datamap["unit"].(string)
+	tmp,_ = strconv.Atoi(datamap["max_days"].(string))
+	house.Max_days = tmp
+	tmp,_ = strconv.Atoi(datamap["min_days"].(string))
+	house.Min_days = tmp
+
+
+	//插入house和facility
+	ok,id := models.InsertHouseData(house,facilities)
+	if !ok {
+		resp["errno"] = models.RECODE_DBERR
+		resp["errno"] = models.RecodeText(models.RECODE_DBERR)
+	}
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	mp:= make(map[string]interface{})
+	mp["house_id"]	= id
+	resp["data"] = mp
 
 }
 
@@ -51,7 +107,6 @@ func (c *HouseController) GetMyHouseData(){
 	mp["errno"] = models.RECODE_OK
 	mp["errmsg"] = models.RecodeText(models.RECODE_OK)
 	mp["data"] = housemap
-	fmt.Println("housemap === ",housemap)
 }
 
 func (c *HouseController) GetHouseIndex() {
