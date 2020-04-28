@@ -18,6 +18,23 @@ func (c *HouseController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *HouseController)PostHouseImage()  {
+	resp := make(map[string]interface{})
+	defer c.sendJSON(resp)
+	datamap:= make(map[string]string)
+
+	//获取session中的houseid
+	houseid := c.GetSession("houseid").(int)
+
+	//获得图片数据,给M存储并且返回URL
+
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	datamap["url"] = "http://192.168.0.115:8080/group1/default/20200427/19/17/5/Hummingbird_by_Shu_Le.jpg"
+	resp["data"] = datamap
+
+}
+
 func (c *HouseController) PostHouseData(){
 	resp := make(map[string]interface{})
 	defer c.sendJSON(resp)
@@ -82,6 +99,8 @@ func (c *HouseController) PostHouseData(){
 	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
 	mp:= make(map[string]interface{})
 	mp["house_id"]	= id
+	//设置houseid的session
+	c.SetSession("houseid",id)
 	resp["data"] = mp
 
 }
