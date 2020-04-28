@@ -23,16 +23,35 @@ func (c *HouseController)PostHouseImage()  {
 	defer c.sendJSON(resp)
 	datamap:= make(map[string]string)
 
-	//获取session中的houseid
-	houseid := c.GetSession("houseid").(int)
-
 	//获得图片数据,给M存储并且返回URL
+	filedata,hd,err := c.GetFile("house_image");
+	hid,_ := c.GetInt("house_id")
+	fmt.Println("house_id ===== ",hid)
+	if err != nil{
+		resp["errno"] =  models.RECODE_REQERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_REQERR)
+		logs.Error("获取二进制数据失败")
+		return
+	}
 
+	//发给M层存储到fastdfs中
+	bufer := make([]byte,hd.Size)
+	filedata.Read(bufer)
+	path := models.UploadFile(bufer,hd.Filename)
+
+	//把url打包发给前端
 	resp["errno"] = models.RECODE_OK
 	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
-	datamap["url"] = "http://192.168.0.115:8080/group1/default/20200427/19/17/5/Hummingbird_by_Shu_Le.jpg"
+	datamap["url"] = path
 	resp["data"] = datamap
 
+	//根据hid获取house数据
+	house := models.SelectHouseDataByHouseId(hid)
+	//向houseimage中插入数据
+	houseimage := models.HouseImage{}
+	houseimage.Url = path
+	houseimage.House = &house
+	models.InsertHouseImage(houseimage)
 }
 
 func (c *HouseController) PostHouseData(){
