@@ -16,6 +16,32 @@ func (c *UserController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *UserController) PostRealName(){
+	//返回数据给前端
+	resp := make(map[string]interface{})
+	defer c.sendJSON(resp)
+
+	//获取前端数据
+	datamap:= make(map[string]interface{})
+	json.Unmarshal(c.Ctx.Input.RequestBody,&datamap)
+	//得到session中的id
+	id := c.GetSession("id")
+	//更新数据库中的user数据
+	user := models.User{Id: id.(int),Real_name: datamap["real_name"].(string),Id_card: datamap["id_card"].(string)}
+	err := models.UpdateUserData(user,"id_card")
+	err = models.UpdateUserData(user,"real_name")
+	if err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		logs.Error(err)
+	}
+	//构造resp
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	resp["data"] = datamap
+}
+
+
 func (c *UserController) PutNameData(){
 	//返回数据给前端
 	resp := make(map[string]interface{})
