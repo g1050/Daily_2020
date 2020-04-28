@@ -2,7 +2,6 @@ package models
 
 import (
 	"astaxie/beego/httplib"
-	"fmt"
 	"io/ioutil"
 	"os"
 )
@@ -13,7 +12,7 @@ func UploadFile(bufer []byte,filename string)string{
 	ioutil.WriteFile(str,bufer,0644)
 	req := httplib.Post("http://192.168.0.115:8080/upload")
 	req.PostFile("file",str)
-	fmt.Println(req.String())
+	//fmt.Println(req.String())
 	ret,_ := req.String()
 	//删除文件
 	os.Remove(str)

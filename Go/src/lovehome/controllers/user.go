@@ -16,6 +16,54 @@ func (c *UserController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *UserController) PutNameData(){
+	//返回数据给前端
+	resp := make(map[string]interface{})
+	defer c.sendJSON(resp)
+
+	//获取前端数据
+	datamap:= make(map[string]interface{})
+	json.Unmarshal(c.Ctx.Input.RequestBody,&datamap)
+	//得到session中的id
+	id := c.GetSession("id")
+	//更新数据库中的user数据
+	user := models.User{Id: id.(int),Name: datamap["name"].(string)}
+	err := models.UpdateUserData(user,"name")
+	//更新session中的name
+	if err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		logs.Error(err)
+	}
+	c.SetSession("name",datamap["name"].(string))
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	resp["data"] = datamap
+	//构造resp
+
+}
+func (c *UserController) GetUserData(){
+
+	resp := make(map[string]interface{})
+	//把数据打包,发送
+	defer c.sendJSON(resp)
+
+	//获取session
+	id := c.GetSession("id")
+	//根据session里的id得到数据
+	ok,user := models.SelectUserDataById(id.(int))
+	if ok{
+		//给resp赋值
+		resp["errno"] = models.RECODE_OK
+		resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+		resp["data"]  = user
+	}else{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+	}
+
+}
+
 func (c *UserController) PostAvatar(){
 
 	//获得文件的二进制数据data,文件信息hd
@@ -35,11 +83,18 @@ func (c *UserController) PostAvatar(){
 	filedata.Read(bufer)
 	path := models.UploadFile(bufer,hd.Filename)
 
+	//把url打包发给前端
 	mp["errno"] = models.RECODE_OK
 	mp["errmsg"] = models.RecodeText(models.RECODE_OK)
 	url := make(map[string]string)
 	url["avatar_url"] = path
 	mp["data"] = url
+
+	//更新user中的数据
+	userUp := models.User{Id: c.GetSession("id").(int),Avatar_url: path}
+	models.UpdateUserData(userUp,"avatar_url")
+	//获取session中的
+
 	/*
 	//获取后缀名字
 	suffix := path.Ext(hd.Filename)
@@ -61,7 +116,7 @@ func (c *UserController)PostLoginData() {
 		logs.Info(err)
 	}
 	//获取数据库中的信息
-	ok,user := models.SelectUserData(mp)
+	ok,user := models.SelectUserDataByMobile(mp["mobile"].(string))
 	if !ok{
 		mp["errno"] = models.RECODE_USERERR
 		mp["errmsg"] = "账号未注册"
@@ -72,7 +127,8 @@ func (c *UserController)PostLoginData() {
 		mp["errno"] = models.RECODE_OK
 		mp["errmsg"] = "密码正确"
 		//设置session
-		c.SetSession("name",user.Password_hash)
+		c.SetSession("name",user.Name)
+		c.SetSession("id",user.Id)
 	}else {
 		mp["errno"] = models.RECODE_DBERR
 		mp["errmsg"] = "密码错误"
@@ -87,22 +143,19 @@ func (c *UserController) PostRegisterData() {
 		logs.Info(err)
 	}
 
-	//设置session
-	c.SetSession("name",mp["mobile"].(string))
-	//插入数据库中,这里的mp用来存储发来的数据
-
-	models.InsertUserData(mp)
-	//logs.Info(ok)
-	ok := true;
-
+	//插入数据库中,这里的mpreturn用来存储发来的数据
+	ok,id	 := models.InsertUserData(mp)
 	mpreturn := make(map[string]interface{})
 	defer c.sendJSON(mpreturn)
-	//defer logs.Info(mpreturn)
+
 	//后面的mp用来存储发送过去的数据
 	if ok == false{
 		mpreturn["errno"] = "4002"
 		mpreturn["errmsg"] = "注册失败"
 	}else{
+		//设置session
+		c.SetSession("name",mp["mobile"].(string))
+		c.SetSession("id",id)
 		mpreturn["errno"] = "0"
 		mpreturn["errmsg"] = "注册成功"
 	}
