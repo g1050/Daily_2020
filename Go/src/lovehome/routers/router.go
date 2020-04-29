@@ -19,4 +19,5 @@ func init() {
 	beego.Router("/api/v1.0/user/houses", &controllers.HouseController{},"Get:GetMyHouseData")
 	beego.Router("/api/v1.0/houses", &controllers.HouseController{},"Post:PostHouseData")
 	beego.Router("/api/v1.0/houses/*/images", &controllers.HouseController{},"Post:PostHouseImage")
+	beego.Router("/api/v1.0/houses/?:house_id", &controllers.HouseController{},"Get:GetHouseDetail")
 }

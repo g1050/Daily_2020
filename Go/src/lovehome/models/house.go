@@ -23,6 +23,10 @@ func SelectHouseDataByHouseId(hid int)House{
 		// 没有找到记录
 		fmt.Printf("Not row found")
 	}
+	o.LoadRelated(&house,"Area")
+	o.LoadRelated(&house,"User")
+	o.LoadRelated(&house,"Images")
+	o.LoadRelated(&house,"Facilities")
 	return house
 }
 func InsertHouseData(house House,facility []Facility)(bool,int64){

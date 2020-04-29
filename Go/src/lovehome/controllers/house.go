@@ -18,6 +18,45 @@ func (c *HouseController) sendJSON(mp map[string]interface{}){
 	c.ServeJSON()
 }
 
+func (c *HouseController) GetHouseDetail(){
+	resp := make(map[string]interface{})
+	defer c.sendJSON(resp)
+
+	//获取user_id和house_id
+	tmp := c.Ctx.Input.Param(":house_id")
+	house_id,_ := strconv.Atoi(tmp)
+	user_id := c.GetSession("id").(int)
+	logs.Info("user_id = ",user_id,"house_id",house_id)
+
+	//从缓存中取出房屋数据
+
+	//关联查询
+	//house获取
+	housemap := make(map[string]interface{})
+	house := models.SelectHouseDataByHouseId(house_id)
+	_,user := models.SelectUserDataById(user_id)
+	house.User = &user
+
+	/*
+	resp["facilities"].appen
+
+
+	facilities := []models.Facility{}
+	for _,f := range datamap["facility"].([]interface{}) {
+		//获得当个设施ID
+		fid,_ := strconv.Atoi(f.(string))
+		//创建单个设施
+		fac := models.Facility{Id: fid}
+		//添加进数组
+		facilities = append(facilities,fac)
+	}
+	 */
+	housemap["house"] = house
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	resp["data"] = housemap
+}
+
 func (c *HouseController)PostHouseImage()  {
 	resp := make(map[string]interface{})
 	defer c.sendJSON(resp)
