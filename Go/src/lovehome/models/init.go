@@ -99,7 +99,7 @@ type OrderHouse struct {
 
 func init() {
 		//连接Mysql数据库
-		orm.RegisterDataBase("default", "mysql", "root:123456@tcp(127.0.0.1:3306)/lovehome?charset=utf8", 30) //最后是一个超时时间
+		orm.RegisterDataBase("default", "mysql", "root:123456@tcp(47.94.14.45:3306)/lovehome?charset=utf8", 30) //最后是一个超时时间
 		//注册model
 		orm.RegisterModel(new(User),new(OrderHouse),new(Facility),new(HouseImage),new(Area),new(House))
 		//创建表,第二个参数表示如果存在该表是否覆盖

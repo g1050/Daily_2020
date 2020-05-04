@@ -58,7 +58,6 @@ func (c *AreaController) GetArea() {
 	//优化前:从数据库中获取数据
 	ok,areas := models.SelectAreaDate()
 
-
 	//将返回的area打包成map
 	if ok{//成功获取数据
 		mp["errno"] = models.RECODE_OK
