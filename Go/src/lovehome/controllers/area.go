@@ -27,7 +27,7 @@ func (c *AreaController) GetArea() {
 	//优化后:利用cache模块和redis,不必每次都从Mysql中取出数据
 	//初始化redis数据库
 	//key区分不同插入者，类似namespace;conn端口号;dbNum数据库;
-	bm, err := cache.NewCache("redis", `{"key":"lovehome","conn":":6379","dbNum":"0"}`)
+	bm, err := cache.NewCache("redis", `{"key":"lovehome","conn":"47.94.14.45:6379","dbNum":"0"}`)
 	if err != nil{
 		logs.Error("redis初始化失败",err)
 	}
