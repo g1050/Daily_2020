@@ -3,6 +3,7 @@ package models
 import (
 	"astaxie/beego/orm"
 	_ "database/sql/driver"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"time"
 )
@@ -98,6 +99,7 @@ type OrderHouse struct {
 }
 
 func init() {
+		fmt.Println("database init -----")
 		//连接Mysql数据库
 		orm.RegisterDataBase("default", "mysql", "root:123456@tcp(47.94.14.45:3306)/lovehome?charset=utf8", 30) //最后是一个超时时间
 		//注册model

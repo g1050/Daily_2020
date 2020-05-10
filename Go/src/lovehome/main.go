@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
 	_ "lovehome/routers"
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	ignoreStaticPath()
+	fmt.Println("main.go------")
 	beego.Run()
 }
 

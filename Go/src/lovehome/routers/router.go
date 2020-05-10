@@ -1,11 +1,14 @@
 package routers
 
 import (
+	"fmt"
 	"lovehome/controllers"
 	"github.com/astaxie/beego"
 )
 
 func init() {
+
+	fmt.Println("router ----------")
     beego.Router("/", &controllers.MainController{})
 	beego.Router("/api/v1.0/areas", &controllers.AreaController{},"Get:GetArea")
 	beego.Router("/api/v1.0/session", &controllers.SessionController{},"Get:MyGetSession;Delete:MyDeleteSession")

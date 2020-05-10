@@ -4,6 +4,7 @@ import (
 	"astaxie/beego"
 	"astaxie/beego/logs"
 	"encoding/json"
+	"fmt"
 	"lovehome/models"
 )
 
@@ -135,12 +136,14 @@ func (c *UserController) PostAvatar(){
 
 func (c *UserController)PostLoginData() {
 	mp := make(map[string]interface{})
+	mp["Hello"] = "hello"
 	defer c.sendJSON(mp)
 
 	//获取前段发送的账号信息
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody,&mp);err != nil {
 		logs.Info(err)
 	}
+	fmt.Println("mp ====== ",mp)
 	//获取数据库中的信息
 	ok,user := models.SelectUserDataByMobile(mp["mobile"].(string))
 	if !ok{
