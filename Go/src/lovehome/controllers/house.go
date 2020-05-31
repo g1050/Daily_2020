@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"lovehome/models"
 	"strconv"
+	models2 "ttms/models"
 )
 
 type HouseController struct {
@@ -76,7 +77,7 @@ func (c *HouseController)PostHouseImage()  {
 	//发给M层存储到fastdfs中
 	bufer := make([]byte,hd.Size)
 	filedata.Read(bufer)
-	path := models.UploadFile(bufer,hd.Filename)
+	path := models2.UploadFile(bufer,hd.Filename)
 
 	//把url打包发给前端
 	resp["errno"] = models.RECODE_OK

@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"lovehome/models"
+	models2 "ttms/models"
 )
 
 type UserController struct {
@@ -97,7 +98,7 @@ func (c *UserController) PostAvatar(){
 	mp := make(map[string]interface{})
 	defer c.sendJSON(mp)
 	//前段发来的二进制数据的字段就叫avatar
-	filedata,hd,err := c.GetFile("avatar");
+	filedata,hd,err := c.GetFile("avator");
 	if err != nil{
 		mp["errno"] =  models.RECODE_REQERR
 		mp["errmsg"] = models.RecodeText(models.RECODE_REQERR)
@@ -108,7 +109,7 @@ func (c *UserController) PostAvatar(){
 	//发给M层存储到fastdfs中
 	bufer := make([]byte,hd.Size)
 	filedata.Read(bufer)
-	path := models.UploadFile(bufer,hd.Filename)
+	path := models2.UploadFile(bufer,hd.Filename)
 
 	//把url打包发给前端
 	mp["errno"] = models.RECODE_OK
